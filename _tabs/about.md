@@ -36,4 +36,3 @@ This is where I share hands-on notes from real projects — Power Platform, Dyna
 
 - 🌐 Website: [zhisonghuo.com](https://www.zhisonghuo.com)
 - 💼 GitHub: [github.com/zhisonghuo](https://github.com/zhisonghuo)
-- 📧 Email: [zhisong.huo@outlook.com](mailto:zhisong.huo@outlook.com)
