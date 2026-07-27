@@ -14,6 +14,4 @@ This site is where I'll share notes and hands-on lessons from working with:
 - **Azure** — cloud services and DevOps
 - **AI** — practical uses of AI tools in day-to-day development
 
-The blog itself is built with [Jekyll](https://jekyllrb.com/) and the [Chirpy theme](https://github.com/cotes2020/jekyll-theme-chirpy), hosted for free on GitHub Pages.
-
 More to come — stay tuned.
