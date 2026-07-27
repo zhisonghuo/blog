@@ -3,6 +3,9 @@ title: Hello World
 date: 2026-07-27 14:00:00 +0800
 categories: [General]
 tags: [intro]
+image:
+  path: /assets/img/posts/hello-world.png
+  alt: Hello World — notes on Power Platform, Dynamics 365, Azure and AI
 ---
 
 Welcome to my blog!
