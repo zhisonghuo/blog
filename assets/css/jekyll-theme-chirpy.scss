@@ -1,0 +1,638 @@
+---
+---
+
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+
+/* append your custom style below */
+
+/* Custom styling adapted from microsoft/mcscatblog (MIT licensed).
+   Gradient-ring post cards + light sidebar theme. */
+
+:root {
+  --post-frame-radius: 14px;
+  --post-frame-thickness: 2px;
+  --post-frame-gradient: linear-gradient(90deg,
+    #0078D4 0%,
+    #5B8DEF 18%,
+    #7F39FB 36%,
+    #C26CF3 54%,
+    #D83B73 72%,
+    #FF8C00 100%);
+}
+
+/* Wrapper hosts gradient ring */
+#post-list .card-wrapper {
+  position: relative;
+  border-radius: var(--post-frame-radius);
+}
+
+/* Override Chirpy's post-preview to remove its hover overlay */
+#post-list .post-preview {
+  position: relative;
+
+  &::before {
+    display: none !important;
+  }
+
+  background: #ffffff;
+  transition: background-color .25s ease, box-shadow .25s ease, transform .25s ease;
+
+  &:hover {
+    background: #fafafa;
+    box-shadow: 0 8px 20px rgba(0,0,0,.10);
+    transform: translateY(-2px);
+  }
+}
+
+/* Base card surface */
+#post-list .card-wrapper > .card {
+  border: none;
+  border-radius: var(--post-frame-radius);
+  position: relative;
+  z-index: 0;
+  background: #ffffff;
+  transition: background-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+
+/* Gradient ring only on hover/focus */
+#post-list .card-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: var(--post-frame-thickness);
+  border-radius: inherit;
+  background: var(--post-frame-gradient);
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events: none;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  z-index: 1;
+}
+
+#post-list .card-wrapper:hover::before,
+#post-list .card-wrapper:focus-within::before {
+  opacity: 1;
+}
+
+#post-list .card-wrapper:hover > .card,
+#post-list .card-wrapper:focus-within > .card,
+#post-list .card-wrapper:hover > .post-preview,
+#post-list .card-wrapper:focus-within > .post-preview {
+  background: #fafafa;
+  box-shadow: 0 8px 20px rgba(0,0,0,.10);
+  transform: translateY(-2px);
+}
+
+#post-list .card:hover,
+#post-list .post-preview:hover {
+  background-color: transparent;
+}
+
+/* Dark mode: keep a subtle contrast */
+@media (prefers-color-scheme: dark) {
+  html:not([data-mode="light"]) {
+    --post-frame-gradient: linear-gradient(90deg,
+      #58B2FF 0%,
+      #5B8DEF 18%,
+      #9F63FF 36%,
+      #C26CF3 54%,
+      #FF6794 72%,
+      #FFB347 100%);
+
+    #post-list .post-preview {
+      background: #1f1f20;
+
+      &:hover {
+        background: #282829;
+      }
+    }
+
+    #post-list .card-wrapper > .card,
+    #post-list .card-wrapper > .post-preview {
+      background: #1f1f20;
+    }
+
+    #post-list .card-wrapper:hover > .card,
+    #post-list .card-wrapper:focus-within > .card,
+    #post-list .card-wrapper:hover > .post-preview,
+    #post-list .card-wrapper:focus-within > .post-preview {
+      background: #282829;
+      box-shadow: 0 6px 22px rgba(0,0,0,.55);
+    }
+  }
+}
+
+html[data-mode="dark"] {
+  --post-frame-gradient: linear-gradient(90deg,
+    #58B2FF 0%,
+    #5B8DEF 18%,
+    #9F63FF 36%,
+    #C26CF3 54%,
+    #FF6794 72%,
+    #FFB347 100%);
+
+  #post-list .post-preview {
+    background: #1f1f20;
+
+    &:hover {
+      background: #282829;
+    }
+  }
+
+  #post-list .card-wrapper > .card,
+  #post-list .card-wrapper > .post-preview {
+    background: #1f1f20;
+  }
+
+  #post-list .card-wrapper:hover > .card,
+  #post-list .card-wrapper:focus-within > .card,
+  #post-list .card-wrapper:hover > .post-preview,
+  #post-list .card-wrapper:focus-within > .post-preview {
+    background: #282829;
+    box-shadow: 0 6px 22px rgba(0,0,0,.55);
+  }
+}
+
+/* === Gradient frame on Further Reading (related posts) cards === */
+
+#related-posts .card {
+  position: relative;
+  border-radius: var(--post-frame-radius);
+  background: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 3px 12px rgba(0,0,0,.08) !important;
+  transition: transform .25s ease, box-shadow .25s ease !important;
+  overflow: visible;
+}
+
+#related-posts .card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: var(--post-frame-thickness);
+  border-radius: inherit;
+  background: var(--post-frame-gradient);
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events: none;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  z-index: -1;
+}
+
+#related-posts .card:hover::before {
+  opacity: 1;
+}
+
+#related-posts .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.10) !important;
+  background: #fafafa !important;
+}
+
+html[data-mode="dark"] #related-posts .card {
+  background: #1f1f20 !important;
+}
+
+html[data-mode="dark"] #related-posts .card:hover {
+  background: #282829 !important;
+  box-shadow: 0 6px 22px rgba(0,0,0,.55) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-mode="light"]) #related-posts .card {
+    background: #1f1f20 !important;
+  }
+
+  html:not([data-mode="light"]) #related-posts .card:hover {
+    background: #282829 !important;
+    box-shadow: 0 6px 22px rgba(0,0,0,.55) !important;
+  }
+}
+
+/* === Light sidebar theme (Fluent-inspired) === */
+
+#sidebar {
+  background: #ffffff !important;
+  border-right: 1px solid #e1dfdd !important;
+  box-shadow: none !important;
+  padding: 1.5rem 0 !important;
+
+  .sidebar-bottom {
+    background: transparent !important;
+    border-top: 1px solid #e1dfdd !important;
+    padding: 0.75rem 1rem !important;
+  }
+}
+
+#sidebar .site-title {
+  font-size: 1.125rem !important;
+  font-weight: 600 !important;
+  color: #323130 !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 2rem !important;
+
+  a {
+    color: #323130 !important;
+    text-decoration: none !important;
+
+    &:hover {
+      color: #0078d4 !important;
+    }
+  }
+}
+
+#sidebar .site-subtitle {
+  color: #605e5c !important;
+  font-size: 0.875rem !important;
+  font-weight: 400 !important;
+  margin-top: 0.25rem !important;
+  opacity: 1 !important;
+}
+
+#sidebar .avatar-container {
+  width: 48px !important;
+  height: 48px !important;
+  margin: 1.5rem auto 1rem !important;
+
+  img {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 8px !important;
+    border: 2px solid #e1dfdd !important;
+  }
+}
+
+#sidebar .nav-item {
+  margin: 0.125rem 0.5rem !important;
+
+  .nav-link {
+    color: #323130 !important;
+    background: transparent !important;
+    border-radius: 6px !important;
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.875rem !important;
+    font-weight: 400 !important;
+    transition: all 0.15s ease !important;
+    border: none !important;
+
+    i {
+      color: #605e5c !important;
+      font-size: 1.125rem !important;
+      width: 1.5rem !important;
+      text-align: center !important;
+      display: inline-block !important;
+      margin-right: 0.625rem !important;
+      transition: color 0.15s ease !important;
+    }
+
+    &:hover {
+      background: #f3f2f1 !important;
+      color: #323130 !important;
+
+      i {
+        filter: brightness(1.2) !important;
+        transform: scale(1.1) !important;
+        transition: all 0.2s ease !important;
+      }
+    }
+
+    &.active {
+      background: #e1dfdd !important;
+      color: #0078d4 !important;
+      font-weight: 500 !important;
+
+      i {
+        filter: brightness(1.3) drop-shadow(0 0 8px currentColor) !important;
+      }
+    }
+  }
+}
+
+#sidebar ul > li.active::after,
+#sidebar ul > li:hover::after {
+  display: none !important;
+}
+
+#sidebar .nav-wrapper {
+  padding: 1rem 0 !important;
+}
+
+/* Per-item icon colors matching the gradient */
+#sidebar .nav-link[href="/"] i {
+  color: #7F39FB !important;
+}
+
+#sidebar .nav-link[href*="categories"] i {
+  color: #5B8DEF !important;
+}
+
+#sidebar .nav-link[href*="tags"] i {
+  color: #C26CF3 !important;
+}
+
+#sidebar .nav-link[href*="archives"] i {
+  color: #FF8C00 !important;
+}
+
+#sidebar .nav-link[href*="about"] i {
+  color: #D83B73 !important;
+}
+
+/* Bottom bar icons - subdued grays */
+#sidebar .sidebar-bottom {
+  a, button {
+    color: #605e5c !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0.375rem !important;
+    margin: 0 0.25rem !important;
+    border-radius: 4px !important;
+    transition: all 0.15s ease !important;
+
+    i {
+      font-size: 1.125rem !important;
+      color: #a19f9d !important;
+      transition: all 0.2s ease !important;
+    }
+
+    &:hover {
+      background: #f3f2f1 !important;
+      color: #323130 !important;
+
+      i {
+        color: #605e5c !important;
+        transform: scale(1.05) !important;
+      }
+    }
+  }
+}
+
+/* Dark mode sidebar */
+html[data-mode="dark"] {
+  #sidebar {
+    background: #1f1f1f !important;
+    border-right-color: #323130 !important;
+
+    .site-title,
+    .site-title a,
+    .profile-wrapper .site-title,
+    .profile-wrapper .site-title a {
+      color: #f3f2f1 !important;
+    }
+
+    .site-title a:hover {
+      color: #40a9ff !important;
+    }
+
+    .site-subtitle,
+    .profile-wrapper .site-subtitle {
+      color: #a19f9d !important;
+    }
+
+    .avatar-container img {
+      border-color: #323130 !important;
+      background: #ffffff !important;
+      padding: 4px !important;
+    }
+
+    .nav-item .nav-link {
+      color: #f3f2f1 !important;
+
+      &:hover {
+        background: #292929 !important;
+        color: #ffffff !important;
+      }
+
+      &.active {
+        background: #323130 !important;
+        color: #40a9ff !important;
+      }
+    }
+
+    .sidebar-bottom {
+      border-top-color: #323130 !important;
+
+      a, button {
+        color: #a19f9d !important;
+
+        i {
+          color: #605e5c !important;
+        }
+
+        &:hover {
+          background: #292929 !important;
+          color: #f3f2f1 !important;
+
+          i {
+            color: #a19f9d !important;
+          }
+        }
+      }
+    }
+  }
+
+  #sidebar #avatar > a,
+  #sidebar .profile-wrapper > a,
+  #sidebar .site-title > a,
+  #sidebar h1 a,
+  #sidebar h1.site-title a {
+    color: #f3f2f1 !important;
+  }
+
+  #sidebar .nav-link[href="/"] i {
+    color: #9F63FF !important;
+  }
+
+  #sidebar .nav-link[href*="categories"] i {
+    color: #58B2FF !important;
+  }
+
+  #sidebar .nav-link[href*="tags"] i {
+    color: #FF6FCF !important;
+  }
+
+  #sidebar .nav-link[href*="archives"] i {
+    color: #FFB347 !important;
+  }
+
+  #sidebar .nav-link[href*="about"] i {
+    color: #FF6794 !important;
+  }
+}
+
+/* System-preference dark mode sidebar */
+@media (prefers-color-scheme: dark) {
+  html:not([data-mode="light"]) {
+    #sidebar {
+      background: #1f1f1f !important;
+      border-right-color: #323130 !important;
+
+      .site-title,
+      .site-title a,
+      .profile-wrapper .site-title,
+      .profile-wrapper .site-title a {
+        color: #f3f2f1 !important;
+      }
+
+      .site-title a:hover {
+        color: #40a9ff !important;
+      }
+
+      .site-subtitle,
+      .profile-wrapper .site-subtitle {
+        color: #a19f9d !important;
+      }
+
+      .avatar-container img {
+        border-color: #323130 !important;
+        background: #ffffff !important;
+        padding: 4px !important;
+      }
+
+      .nav-item .nav-link {
+        color: #f3f2f1 !important;
+
+        &:hover {
+          background: #292929 !important;
+          color: #ffffff !important;
+        }
+
+        &.active {
+          background: #323130 !important;
+          color: #40a9ff !important;
+        }
+      }
+
+      .sidebar-bottom {
+        border-top-color: #323130 !important;
+
+        a, button {
+          color: #a19f9d !important;
+
+          i {
+            color: #605e5c !important;
+          }
+
+          &:hover {
+            background: #292929 !important;
+            color: #f3f2f1 !important;
+
+            i {
+              color: #a19f9d !important;
+            }
+          }
+        }
+      }
+    }
+
+    #sidebar #avatar > a,
+    #sidebar .profile-wrapper > a,
+    #sidebar .site-title > a,
+    #sidebar h1 a,
+    #sidebar h1.site-title a {
+      color: #f3f2f1 !important;
+    }
+
+    #sidebar .nav-link[href="/"] i {
+      color: #9F63FF !important;
+    }
+
+    #sidebar .nav-link[href*="categories"] i {
+      color: #58B2FF !important;
+    }
+
+    #sidebar .nav-link[href*="tags"] i {
+      color: #FF6FCF !important;
+    }
+
+    #sidebar .nav-link[href*="archives"] i {
+      color: #FFB347 !important;
+    }
+
+    #sidebar .nav-link[href*="about"] i {
+      color: #FF6794 !important;
+    }
+  }
+}
+
+/* Fix thumbnail distortion on home page preview images */
+.preview-img img {
+  object-fit: initial;
+}
+
+/* Word wrap + hidden line numbers for plaintext code blocks
+   (add `wrapcodeblocktext` class to a post to enable) */
+.wrapcodeblocktext pre {
+  white-space: pre-wrap !important;
+}
+.wrapcodeblocktext pre.lineno {
+  display: none !important;
+}
+
+/* Search result highlight styling */
+html:not([data-mode]),
+html[data-mode="light"] {
+  mark {
+    background-color: rgba(255, 235, 59, 0.3) !important;
+    color: inherit !important;
+    font-weight: 500 !important;
+    padding: 0.1em 0.1em;
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px rgba(255, 235, 59, 0.15);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  a:hover mark {
+    background-color: rgba(255, 235, 59, 0.45) !important;
+    box-shadow: 0 0 0 1px rgba(255, 235, 59, 0.3);
+  }
+}
+
+html[data-mode="dark"] {
+  mark {
+    background-color: rgba(255, 193, 7, 0.25) !important;
+    color: inherit !important;
+    font-weight: 500 !important;
+    padding: 0.1em 0.1em;
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px rgba(255, 193, 7, 0.15);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  a:hover mark {
+    background-color: rgba(255, 193, 7, 0.35) !important;
+    box-shadow: 0 0 0 1px rgba(255, 193, 7, 0.25);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-mode="light"]) {
+    mark {
+      background-color: rgba(255, 193, 7, 0.25) !important;
+      color: inherit !important;
+      font-weight: 500 !important;
+      padding: 0.1em 0.1em;
+      border-radius: 3px;
+      box-shadow: 0 0 0 1px rgba(255, 193, 7, 0.15);
+      transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    a:hover mark {
+      background-color: rgba(255, 193, 7, 0.35) !important;
+      box-shadow: 0 0 0 1px rgba(255, 193, 7, 0.25);
+    }
+  }
+}
