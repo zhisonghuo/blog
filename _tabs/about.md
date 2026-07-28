@@ -17,9 +17,6 @@ I'm a freelance **Power Platform and Dynamics 365 solution architect**. Most of 
 - **Azure back ends** — for when Dataverse is the wrong home for the data: Functions, SQL, Blob Storage, and Microsoft Graph
 - **Power BI reporting**, and **Copilot Studio** where an assistant genuinely earns its place
 
-> **Recent example:** an email archive that moved more than 100,000 messages out of expensive CRM storage into Azure, while keeping the full customer history one click from the record. Running cost: under €40 a month.
-{: .prompt-info }
-
 I work **end to end** — requirements, architecture, build, deployment, documentation, and handover — so what I leave behind can be maintained without me.
 
 ## Background
