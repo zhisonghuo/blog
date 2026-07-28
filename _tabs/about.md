@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 5
 ---
 
-## Hi, I'm Zhisong Huo 👋
+## Hi, I'm Zhisong Huo
 
 **I build the internal tools your team actually opens every morning.**
 
