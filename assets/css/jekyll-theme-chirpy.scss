@@ -648,3 +648,18 @@ html[data-mode="dark"] {
     }
   }
 }
+
+/* Heading anchors
+   Chirpy only hides the "#" inside @media (hover: hover), so touch devices —
+   which report hover: none — show it permanently next to every heading.
+   Hide it there too. */
+@media (hover: none) {
+  h1 .anchor,
+  h2 .anchor,
+  h3 .anchor,
+  h4 .anchor,
+  h5 .anchor,
+  h6 .anchor {
+    display: none !important;
+  }
+}
