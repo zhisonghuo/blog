@@ -347,6 +347,10 @@ html[data-mode="dark"] #related-posts .card:hover {
   color: #FF8C00 !important;
 }
 
+#sidebar .nav-link[href*="resources"] i {
+  color: #00B7C3 !important;
+}
+
 #sidebar .nav-link[href*="about"] i {
   color: #D83B73 !important;
 }
@@ -468,6 +472,10 @@ html[data-mode="dark"] {
     color: #FFB347 !important;
   }
 
+  #sidebar .nav-link[href*="resources"] i {
+    color: #00D4E0 !important;
+  }
+
   #sidebar .nav-link[href*="about"] i {
     color: #FF6794 !important;
   }
@@ -560,6 +568,10 @@ html[data-mode="dark"] {
 
     #sidebar .nav-link[href*="archives"] i {
       color: #FFB347 !important;
+    }
+
+    #sidebar .nav-link[href*="resources"] i {
+      color: #00D4E0 !important;
     }
 
     #sidebar .nav-link[href*="about"] i {
