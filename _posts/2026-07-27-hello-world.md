@@ -12,7 +12,7 @@ Welcome to my blog!
 
 This site is where I'll share notes and hands-on lessons from working with:
 
-- **Power Platform** — Power Apps, Power Automate, Power Pages
+- **Power Platform** — Power Apps, Power Automate, Power Pages, Power BI, Copilot Studio
 - **Dynamics 365** — model-driven apps, customizations, integrations
 - **Azure** — cloud services and DevOps
 - **AI** — practical uses of AI tools in day-to-day development
