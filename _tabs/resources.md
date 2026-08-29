@@ -47,6 +47,7 @@ A curated set of references I actually use when building on the Microsoft stack 
 | [XrmToolBox](https://www.xrmtoolbox.com/) | Indispensable community tool suite for Dataverse |
 | [PCF Gallery](https://pcf.gallery/) | Open-source code components you can drop into apps |
 | [PnP Power Apps Samples](https://github.com/pnp/powerapps-samples) | Community-maintained sample apps and patterns |
+| [CAT Agent Skills](https://microsoft.github.io/cat-agent-skills/) | Gallery of drop-in agent skills for Cowork, Copilot Studio, and Scout |
 
 ### Learning & Community
 
@@ -80,7 +81,6 @@ A curated set of references I actually use when building on the Microsoft stack 
 | [SharePoint Framework (SPFx)](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview) | Client-side web parts and extensions |
 | [Teams Developer Platform](https://learn.microsoft.com/en-us/microsoftteams/platform/) | Tabs, bots, message extensions, and apps |
 | [M365 Copilot Extensibility](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/) | Declarative agents, plugins, and connectors |
-| [CAT Agent Skills](https://microsoft.github.io/cat-agent-skills/) | Gallery of drop-in agent skills for Cowork, Copilot Studio, and Scout |
 | [PnP Community](https://pnp.github.io/) | Patterns and practices, samples, and provisioning tooling |
 
 ### Administration
